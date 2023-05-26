@@ -21,8 +21,10 @@ services:
             - REDIS_PORT=${REDIS_PORT}
             - REDIS_DB_NUMBER=${REDIS_DB_NUMBER}
         depends_on:
-            - redis
-            - rabbitmq
+            redis:
+                condition: service_healthy
+            rabbitmq:
+                condition: service_healthy
         restart: always
         command: ["sh", "-c", "cd engine/server && flask run --reload --host=0.0.0.0"]
 
@@ -43,8 +45,10 @@ services:
             - REDIS_PORT=${REDIS_PORT}
             - REDIS_DB_NUMBER=${REDIS_DB_NUMBER}
         depends_on:
-            - redis
-            - rabbitmq
+            redis:
+                condition: service_healthy
+            rabbitmq:
+                condition: service_healthy
         restart: always
         command: ["sh", "-c", "celery -A engine.celery.app worker --loglevel=INFO"]
 
@@ -67,3 +71,23 @@ services:
             test: [ "CMD", "rabbitmq-diagnostics", "-q", "ping" ]
             timeout: 5s
             retries: 3
+
+    flower:
+        build:
+            context: .
+            dockerfile: docker/Dockerfile-flower
+        ports:
+            - "5555:5555"
+        environment:
+            FLOWER_BASIC_AUTH: ${FLOWER_USER}:${FLOWER_PASSWORD}
+            FLOWER_BROKER_API: http://${RABBITMQ_USER}:${RABBITMQ_PASSWORD}@${RABBITMQ_HOST}:15672/api/
+            CELERY_BROKER_URL: amqp://${RABBITMQ_USER}:${RABBITMQ_PASSWORD}@${RABBITMQ_HOST}:${RABBITMQ_PORT}/${RABBITMQ_VHOST}
+            CELERY_RESULT_BACKEND: redis://:${REDIS_PASSWORD}@${REDIS_HOST}:${REDIS_PORT}/${REDIS_DB_NUMBER}
+        depends_on:
+            worker:
+                condition: service_started
+            redis:
+                condition: service_healthy
+            rabbitmq:
+                condition: service_healthy
+        restart: always
