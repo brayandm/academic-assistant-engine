@@ -2,6 +2,7 @@ from apiflask import APIFlask
 
 app = APIFlask(__name__)
 
-@app.get('/')
+
+@app.get("/")
 def say_hello():
-    return {'message': 'Hello!'}
+    return {"message": "Hello!"}
