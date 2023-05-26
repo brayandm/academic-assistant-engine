@@ -11,6 +11,3 @@ app = Celery(
 @app.task
 def add(x, y):
     return x + y
-
-
-# celery -A engine.celery.tasks worker --loglevel=INFO
