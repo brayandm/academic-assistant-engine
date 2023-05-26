@@ -6,5 +6,4 @@ app = APIFlask(__name__)
 
 @app.get("/")
 def say_hello():
-    tasks.add.delay(1, 2)
-    return {"message": "Hello!"}
+    return {"taskId": tasks.add.delay().id}
