@@ -2,13 +2,9 @@ from celery import Celery
 
 from .config import RESULT_BACKEND, CELERY_BROKER_URL
 
-app = Celery(
-    "tasks",
+celery = Celery(
+    "engine",
     backend=RESULT_BACKEND,
     broker=CELERY_BROKER_URL,
+    include=["engine.server.tasks"],
 )
-
-
-@app.task
-def add(x, y):
-    return x + y
