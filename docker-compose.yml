@@ -12,7 +12,7 @@ services:
             - .:/app
         depends_on:
             - redis
-            - rabbitmq
+            - amqp
         restart: always
         command: ["sh", "-c", "cd server && pipenv run flask run --reload --host=0.0.0.0"]
  
@@ -24,9 +24,13 @@ services:
             timeout: 5s
             retries: 3
     
-    rabbitmq:
+    amqp:
         image: rabbitmq:3.10.7-management-alpine
         restart: always
+        environment:
+            - RABBITMQ_DEFAULT_USER=${RABBITMQ_USER}
+            - RABBITMQ_DEFAULT_PASS=${RABBITMQ_PASSWORD}
+            - RABBITMQ_DEFAULT_VHOST=${RABBITMQ_VHOST}
         healthcheck:
             test: [ "CMD", "rabbitmq-diagnostics", "-q", "ping" ]
             timeout: 5s
