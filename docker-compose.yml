@@ -7,7 +7,7 @@ services:
             context: .
             dockerfile: docker/Dockerfile-server
         ports:
-            - "127.0.0.1:5000:5000"
+            - "0.0.0.0:5000:5000"
         volumes:
             - .:/app
         environment:
@@ -77,7 +77,7 @@ services:
             context: .
             dockerfile: docker/Dockerfile-flower
         ports:
-            - "5555:5555"
+            - "0.0.0.0.5555:5555"
         environment:
             FLOWER_BASIC_AUTH: ${FLOWER_USER}:${FLOWER_PASSWORD}
             FLOWER_BROKER_API: http://${RABBITMQ_USER}:${RABBITMQ_PASSWORD}@${RABBITMQ_HOST}:15672/api/
