@@ -10,11 +10,17 @@ services:
             - "127.0.0.1:5000:5000"
         volumes:
             - .:/app
+        environment:
+            - RABBITMQ_USER=${RABBITMQ_USER}
+            - RABBITMQ_PASSWORD=${RABBITMQ_PASSWORD}
+            - RABBITMQ_HOST=${RABBITMQ_HOST}
+            - RABBITMQ_PORT=${RABBITMQ_PORT}
+            - RABBITMQ_VHOST=${RABBITMQ_VHOST}
         depends_on:
             - redis
             - rabbitmq
         restart: always
-        command: ["sh", "-c", "cd server && flask run --reload --host=0.0.0.0"]
+        command: ["sh", "-c", "cd engine/server && flask run --reload --host=0.0.0.0"]
  
     redis:
         image: redis:alpine

@@ -1,6 +1,6 @@
 from celery import Celery
 
-from config import CELERY_BROKER_URL
+from .config import CELERY_BROKER_URL
 
 app = Celery(
     "tasks",
@@ -11,3 +11,6 @@ app = Celery(
 @app.task
 def add(x, y):
     return x + y
+
+
+# celery -A engine.celery.tasks worker --loglevel=INFO
