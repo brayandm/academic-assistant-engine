@@ -21,7 +21,7 @@ cp pre-commit .git/hooks/pre-commit
 4 - Start the server on port 5000:
 
 ```bash
-cd server && flask run --reload
+cd server && pipenv run flask run --reload
 ```
 
 ## Docker instructions
