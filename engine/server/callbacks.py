@@ -1,6 +1,6 @@
 import json
 import requests
-from .output_schemas import TextTranslated
+from .output_schemas import TranslationResult
 from .config import API_TOKEN
 from .redis import redis
 
@@ -9,7 +9,7 @@ def on_translation_complete(task, _, task_id, task_args, task_kwargs, *args, **k
     hook = task_kwargs.get("hook", None)
     if not hook:
         return
-    schema = TextTranslated()
+    schema = TranslationResult()
     data = json.loads(redis.get(f"celery-task-meta-{task_id}").decode("utf-8"))[
         "result"
     ]

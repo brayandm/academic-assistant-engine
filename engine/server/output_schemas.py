@@ -1,9 +1,10 @@
-from apiflask import Schema
-
-from apiflask.fields import String
-from apiflask.validators import Length
+from marshmallow import Schema, fields, validate
 
 
 class TextTranslated(Schema):
-    taskId = String(required=True, validate=Length(0, 256))
-    text = String(required=True, validate=Length(0, 10000))
+    text = fields.String(required=True, validate=validate.Length(0, 10000))
+
+
+class TranslationResult(Schema):
+    taskId = fields.String(required=True, validate=validate.Length(0, 256))
+    result = fields.Nested(TextTranslated, required=True)

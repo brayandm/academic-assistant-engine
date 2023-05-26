@@ -10,6 +10,7 @@ black = "*"
 celery = "*"
 redis = "*"
 requests = "*"
+marshmallow = "*"
 
 [dev-packages]
 
