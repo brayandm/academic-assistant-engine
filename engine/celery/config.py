@@ -10,6 +10,15 @@ AMQP = {
     ),
 }
 
+REDIS = {
+    "password": os.environ.get("REDIS_PASSWORD"),
+    "host": os.environ.get("REDIS_HOST"),
+    "port": os.environ.get("REDIS_PORT"),
+    "db": os.environ.get("REDIS_DB_NUMBER"),
+}
+
 CELERY_BROKER_URL = (
     "amqp://{username}:{password}@{host}:{port}/{vhost}".format(**AMQP),
 )
+
+RESULT_BACKEND = "redis://:{password}@{host}:{port}/{db}".format(**REDIS)

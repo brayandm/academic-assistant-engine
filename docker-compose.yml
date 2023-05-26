@@ -16,6 +16,10 @@ services:
             - RABBITMQ_HOST=${RABBITMQ_HOST}
             - RABBITMQ_PORT=${RABBITMQ_PORT}
             - RABBITMQ_VHOST=${RABBITMQ_VHOST}
+            - REDIS_PASSWORD=${REDIS_PASSWORD}
+            - REDIS_HOST=${REDIS_HOST}
+            - REDIS_PORT=${REDIS_PORT}
+            - REDIS_DB_NUMBER=${REDIS_DB_NUMBER}
         depends_on:
             - redis
             - rabbitmq
@@ -34,6 +38,10 @@ services:
             - RABBITMQ_HOST=${RABBITMQ_HOST}
             - RABBITMQ_PORT=${RABBITMQ_PORT}
             - RABBITMQ_VHOST=${RABBITMQ_VHOST}
+            - REDIS_PASSWORD=${REDIS_PASSWORD}
+            - REDIS_HOST=${REDIS_HOST}
+            - REDIS_PORT=${REDIS_PORT}
+            - REDIS_DB_NUMBER=${REDIS_DB_NUMBER}
         depends_on:
             - redis
             - rabbitmq

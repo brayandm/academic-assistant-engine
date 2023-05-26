@@ -1,9 +1,10 @@
 from celery import Celery
 
-from .config import CELERY_BROKER_URL
+from .config import RESULT_BACKEND, CELERY_BROKER_URL
 
 app = Celery(
     "tasks",
+    backend=RESULT_BACKEND,
     broker=CELERY_BROKER_URL,
 )
 
