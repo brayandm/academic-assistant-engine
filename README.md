@@ -1,12 +1,32 @@
 ## Installation instructions
 
-1 - Install the pre-commit hook:
+1 - Install pipenv:
+
+```bash
+pip install pipenv
+```
+
+2 - Initialize the virtual environment and install the dependencies:
+
+```bash
+pipenv install
+```
+
+3 - Install the pre-commit hook:
 
 ```bash
 cp pre-commit .git/hooks/pre-commit
 ```
 
-2 - Start the server on port 5000:
+4 - Start the server on port 5000:
+
+```bash
+cd server && flask run --reload
+```
+
+## Docker instructions
+
+1- Start the server on port 5000:
 
 ```bash
 docker compose up -d
