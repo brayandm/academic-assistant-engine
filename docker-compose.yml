@@ -14,7 +14,7 @@ services:
             - redis
             - amqp
         restart: always
-        command: ["sh", "-c", "cd server && pipenv run flask run --reload --host=0.0.0.0"]
+        command: ["sh", "-c", "cd server && flask run --reload --host=0.0.0.0"]
  
     redis:
         image: redis:alpine
