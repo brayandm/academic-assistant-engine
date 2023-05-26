@@ -20,6 +20,7 @@ services:
             - REDIS_HOST=${REDIS_HOST}
             - REDIS_PORT=${REDIS_PORT}
             - REDIS_DB_NUMBER=${REDIS_DB_NUMBER}
+            - API_TOKEN=${API_TOKEN}
         depends_on:
             redis:
                 condition: service_healthy
