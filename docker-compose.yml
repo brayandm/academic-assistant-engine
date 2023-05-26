@@ -12,7 +12,7 @@ services:
             - .:/app
         depends_on:
             - redis
-            - amqp
+            - rabbitmq
         restart: always
         command: ["sh", "-c", "cd server && flask run --reload --host=0.0.0.0"]
  
@@ -24,7 +24,7 @@ services:
             timeout: 5s
             retries: 3
     
-    amqp:
+    rabbitmq:
         image: rabbitmq:3.10.7-management-alpine
         restart: always
         environment:
