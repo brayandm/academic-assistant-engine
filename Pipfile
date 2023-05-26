@@ -9,6 +9,7 @@ flask = "*"
 black = "*"
 celery = "*"
 redis = "*"
+requests = "*"
 
 [dev-packages]
 

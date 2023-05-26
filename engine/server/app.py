@@ -1,6 +1,6 @@
 from apiflask import APIFlask, HTTPTokenAuth
 from . import tasks
-from .schemas import TextToTranslate
+from .input_schemas import TextToTranslate
 from .config import API_TOKEN
 
 app = APIFlask(__name__)
@@ -25,4 +25,4 @@ def say_hello():
 @app.auth_required(auth)
 @app.input(TextToTranslate)
 def translate(data):
-    return {"taskId": tasks.translate.delay(data).id}
+    return {"taskId": tasks.translate.delay(data, hook=data.get("hook", None)).id}

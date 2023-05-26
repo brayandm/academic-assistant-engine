@@ -9,3 +9,4 @@ class TextToTranslate(Schema):
     targetLanguage = String(required=True, validate=Length(0, 256))
     textType = String(required=True, validate=Length(0, 256))
     text = String(required=True, validate=Length(0, 5000))
+    hook = String(required=False, validate=Length(0, 256))
