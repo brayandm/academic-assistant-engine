@@ -1,7 +1,7 @@
 from apiflask import APIFlask, HTTPTokenAuth
 from . import tasks
 from .input_schemas import TextToTranslate
-from .config import API_TOKEN
+from .config import ENGINE_API_TOKEN
 
 app = APIFlask(__name__)
 
@@ -11,7 +11,7 @@ auth = HTTPTokenAuth(scheme="ApiKey", header="X-API-Key")
 @auth.verify_token
 def verify_token(token):
     print(token)
-    if token == API_TOKEN:
+    if token == ENGINE_API_TOKEN:
         return token
     print("Invalid token")
 

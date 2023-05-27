@@ -1,7 +1,7 @@
 import json
 import requests
 from .output_schemas import TranslationResult
-from .config import API_TOKEN
+from .config import ENGINE_API_TOKEN
 from .redis import redis
 
 
@@ -19,7 +19,7 @@ def on_translation_completed(task, _, task_id, task_args, task_kwargs, *args, **
     requests.post(
         hook,
         json=schema.dump(data),
-        headers={"X-API-Key": API_TOKEN},
+        headers={"X-API-Key": ENGINE_API_TOKEN},
     )
 
 
@@ -34,5 +34,5 @@ def on_translation_failed(task, _, task_id, task_args, task_kwargs, *args, **kwa
     requests.post(
         hook,
         json=schema.dump(data),
-        headers={"X-API-Key": API_TOKEN},
+        headers={"X-API-Key": ENGINE_API_TOKEN},
     )

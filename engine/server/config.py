@@ -1,6 +1,6 @@
 import os
 
-API_TOKEN = os.environ.get("API_TOKEN")
+ENGINE_API_TOKEN = os.environ.get("ENGINE_API_TOKEN")
 
 REDIS = {
     "password": os.environ.get("REDIS_PASSWORD"),
