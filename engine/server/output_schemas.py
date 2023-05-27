@@ -6,5 +6,6 @@ class TextTranslated(Schema):
 
 
 class TranslationResult(Schema):
-    taskId = fields.String(required=True, validate=validate.Length(0, 256))
+    task_id = fields.String(required=True, validate=validate.Length(0, 256))
+    status = fields.String(required=True, validate=validate.Length(0, 256))
     result = fields.Nested(TextTranslated, required=True)

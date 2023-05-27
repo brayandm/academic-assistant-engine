@@ -8,6 +8,10 @@ def add(task):
     return {"taskId": task.request.id, "result": {"message": "Hello!"}}
 
 
-@celery.task(bind=True, on_success=callbacks.on_translation_complete)
+@celery.task(
+    bind=True,
+    on_success=callbacks.on_translation_completed,
+    on_failure=callbacks.on_translation_failed,
+)
 def translate(task, data, hook=None):
-    return {"taskId": task.request.id, "result": actions.translate(data)}
+    return actions.translate(data)

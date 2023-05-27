@@ -18,11 +18,11 @@ def verify_token(token):
 
 @app.get("/")
 def say_hello():
-    return {"taskId": tasks.add.delay().id}
+    return {"task_id": tasks.add.delay().id}
 
 
 @app.post("/translate")
 @app.auth_required(auth)
 @app.input(TextToTranslate)
 def translate(data):
-    return {"taskId": tasks.translate.delay(data, hook=data.get("hook", None)).id}
+    return {"task_id": tasks.translate.delay(data, hook=data.get("hook", None)).id}
