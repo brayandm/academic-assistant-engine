@@ -68,7 +68,7 @@ services:
             - academic-assistant-local
         restart: always
         healthcheck:
-            test: [ "CMD", "redis-cli", "ping"]
+            test: ["CMD", "redis-cli", "auth", "${REDIS_PASSWORD}"]
             timeout: 5s
             retries: 3
     
