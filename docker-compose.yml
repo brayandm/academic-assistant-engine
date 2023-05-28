@@ -71,6 +71,7 @@ services:
             test: ["CMD", "redis-cli", "auth", "${REDIS_PASSWORD}"]
             timeout: 5s
             retries: 3
+        command: redis-server /usr/local/etc/redis/redis.conf
     
     engine_rabbitmq:
         image: rabbitmq:3.10.7-management-alpine
