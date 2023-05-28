@@ -1,0 +1,7 @@
+FROM redis:alpine
+
+COPY ./docker/redis.conf /usr/local/etc/redis/redis.conf
+
+ARG REDIS_PASSWORD=""
+
+RUN sed -i 's/# requirepass foobared/requirepass $REDIS_PASSWORD/' /usr/local/etc/redis/redis.conf

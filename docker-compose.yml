@@ -59,7 +59,11 @@ services:
         command: ["sh", "-c", "celery -A engine.celery.app worker --loglevel=INFO"]
 
     engine_redis:
-        image: redis:alpine
+        build:
+            context: .
+            dockerfile: docker/Dockerfile-redis
+            args:
+                REDIS_PASSWORD: ${REDIS_PASSWORD}
         networks:
             - academic-assistant
         restart: always
