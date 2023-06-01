@@ -5,6 +5,7 @@ from apiflask.validators import Length
 
 
 class TextToTranslate(Schema):
+    user = String(required=True, validate=Length(0, 256))
     original_language = String(required=True, validate=Length(0, 256))
     target_language = String(required=True, validate=Length(0, 256))
     text_type = String(required=True, validate=Length(0, 256))
