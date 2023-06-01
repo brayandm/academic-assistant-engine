@@ -6,8 +6,6 @@ services:
         build:
             context: .
             dockerfile: docker/Dockerfile-server
-        ports:
-            - "127.0.0.1:5000:5000"
         networks:
             - academic-assistant
         environment:
