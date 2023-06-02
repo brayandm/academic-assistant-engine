@@ -2,7 +2,7 @@ import json
 import requests
 from .output_schemas import TranslationResult
 from ..config import ENGINE_API_TOKEN
-from .redis import redis
+from ..redis import redis
 
 
 def on_translation_completed(task, _, task_id, task_args, task_kwargs, *args, **kwargs):
