@@ -11,6 +11,7 @@ celery = "*"
 redis = "*"
 requests = "*"
 marshmallow = "*"
+openai = "*"
 
 [dev-packages]
 

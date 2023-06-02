@@ -50,6 +50,7 @@ services:
             - REDIS_PORT=${REDIS_PORT}
             - REDIS_DB_NUMBER=${REDIS_DB_NUMBER}
             - ENGINE_API_TOKEN=${ENGINE_API_TOKEN}
+            - OPENAI_API_KEY=${OPENAI_API_KEY}
         depends_on:
             engine_redis:
                 condition: service_healthy
