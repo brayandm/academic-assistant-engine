@@ -5,7 +5,7 @@ from . import actions
 
 @celery.task(bind=True)
 def add(task):
-    return {"taskId": task.request.id, "result": {"message": "Hello!"}}
+    return {"task_id": task.request.id, "result": {"message": "Hello!"}}
 
 
 @celery.task(
@@ -14,4 +14,4 @@ def add(task):
     on_failure=callbacks.on_translation_failed,
 )
 def translate(task, data, hook=None):
-    return actions.translate(data)
+    return actions.translate(task.request.id, data)
