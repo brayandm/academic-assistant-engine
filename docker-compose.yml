@@ -65,6 +65,8 @@ services:
             dockerfile: docker/Dockerfile-redis
             args:
                 REDIS_PASSWORD: ${REDIS_PASSWORD}
+        ports:
+            - "6377:6379"
         networks:
             - academic-assistant-local
         restart: always
