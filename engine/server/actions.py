@@ -1,14 +1,7 @@
-import time
-import random
 from ..openai import api
 
 
 def translate(task_id, user, original_language, target_language, text_type, text):
-    time.sleep(3)
-    rd = random.randint(0, 1)
-    if rd == 0:
-        raise Exception("test")
-
     response = api.chat_completion(
         user,
         task_id,
