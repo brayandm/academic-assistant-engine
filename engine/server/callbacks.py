@@ -14,7 +14,15 @@ def on_translation_completed(task, _, task_id, task_args, task_kwargs, *args, **
         "result"
     ]
 
-    data = {"task_id": task_id, "status": "SUCCESS", "result": result, "ai_models": []}
+    data = {
+        "task_id": task_id,
+        "status": "SUCCESS",
+        "result": result,
+        "ai_models": [
+            json.loads(model)
+            for model in redis.lrange(f"openia-models-meta-{task_id}", 0, -1)
+        ],
+    }
 
     requests.post(
         hook,
@@ -33,7 +41,10 @@ def on_translation_failed(task, _, task_id, task_args, task_kwargs, *args, **kwa
         "task_id": task_id,
         "status": "FAILED",
         "result": {"text": ""},
-        "ai_models": [],
+        "ai_models": [
+            json.loads(model)
+            for model in redis.lrange(f"openia-models-meta-{task_id}", 0, -1)
+        ],
     }
 
     requests.post(
