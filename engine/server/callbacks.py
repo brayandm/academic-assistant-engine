@@ -14,7 +14,7 @@ def on_translation_completed(task, _, task_id, task_args, task_kwargs, *args, **
         "result"
     ]
 
-    data = {"task_id": task_id, "status": "SUCCESS", "result": result}
+    data = {"task_id": task_id, "status": "SUCCESS", "result": result, "ai_models": []}
 
     requests.post(
         hook,
@@ -29,7 +29,12 @@ def on_translation_failed(task, _, task_id, task_args, task_kwargs, *args, **kwa
         return
     schema = TranslationResult()
 
-    data = {"task_id": task_id, "status": "FAILED", "result": ""}
+    data = {
+        "task_id": task_id,
+        "status": "FAILED",
+        "result": {"text": ""},
+        "ai_models": [],
+    }
 
     requests.post(
         hook,
