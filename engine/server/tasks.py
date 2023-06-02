@@ -14,4 +14,11 @@ def add(task):
     on_failure=callbacks.on_translation_failed,
 )
 def translate(task, data, hook=None):
-    return actions.translate(task.request.id, data)
+    return actions.translate(
+        task.request.id,
+        data["user"],
+        data["original_language"],
+        data["target_language"],
+        data["text_type"],
+        data["text"],
+    )

@@ -3,19 +3,20 @@ import random
 from ..openai import api
 
 
-def translate(task_id, data):
+def translate(task_id, user, original_language, target_language, text_type, text):
     time.sleep(3)
     rd = random.randint(0, 1)
     if rd == 0:
         raise Exception("test")
 
     response = api.chat_completion(
+        user,
         task_id,
         "gpt-3.5-turbo",
         [
             {
                 "role": "user",
-                "content": f"Translate this text in spanish: {data['text']}",
+                "content": f"Translate the following text from {original_language} to {target_language} keeping the {text_type} format:\n\n{text}",
             },
         ],
     )

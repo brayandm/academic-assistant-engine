@@ -6,10 +6,11 @@ from ..redis import redis
 openai.api_key = os.environ.get("OPENAI_API_KEY")
 
 
-def chat_completion(task_id, model, messages):
+def chat_completion(user, task_id, model, messages):
     response = openai.ChatCompletion.create(
         model=model,
         messages=messages,
+        user=user,
     )
 
     model = {
