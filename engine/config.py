@@ -22,3 +22,5 @@ CELERY_BROKER_URL = (
 )
 
 RESULT_BACKEND = "redis://:{password}@{host}:{port}/{db}".format(**REDIS)
+
+ENGINE_API_TOKEN = os.environ.get("ENGINE_API_TOKEN")

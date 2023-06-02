@@ -1,7 +1,7 @@
 import json
 import requests
 from .output_schemas import TranslationResult
-from .config import ENGINE_API_TOKEN
+from ..config import ENGINE_API_TOKEN
 from .redis import redis
 
 

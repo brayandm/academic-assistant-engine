@@ -1,4 +1,4 @@
 from redis import Redis
-from .config import REDIS
+from ..config import REDIS
 
 redis = Redis(**REDIS)

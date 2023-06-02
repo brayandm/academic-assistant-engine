@@ -1,7 +1,7 @@
 from apiflask import APIFlask, HTTPTokenAuth
 from . import tasks
 from .input_schemas import TextToTranslate
-from .config import ENGINE_API_TOKEN
+from ..config import ENGINE_API_TOKEN
 
 app = APIFlask(__name__)
 

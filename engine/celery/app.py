@@ -1,6 +1,6 @@
 from celery import Celery
 
-from .config import RESULT_BACKEND, CELERY_BROKER_URL
+from ..config import RESULT_BACKEND, CELERY_BROKER_URL
 
 celery = Celery(
     "engine",
