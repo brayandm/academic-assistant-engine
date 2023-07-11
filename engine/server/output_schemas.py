@@ -14,6 +14,7 @@ class AiModel(Schema):
 
 class TranslationResult(Schema):
     task_id = fields.String(required=True, validate=validate.Length(0, 256))
+    task_name = fields.String(required=True, validate=validate.Length(0, 256))
     status = fields.String(required=True, validate=validate.Length(0, 256))
     result = fields.Nested(TextTranslated, required=True)
     ai_models = fields.List(fields.Nested(AiModel), required=True)

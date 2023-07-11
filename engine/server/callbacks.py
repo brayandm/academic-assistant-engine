@@ -16,6 +16,7 @@ def on_translation_completed(task, _, task_id, task_args, task_kwargs, *args, **
 
     data = {
         "task_id": task_id,
+        "task_name": "TRANSLATION",
         "status": "SUCCESS",
         "result": result,
         "ai_models": [
@@ -39,6 +40,7 @@ def on_translation_failed(task, _, task_id, task_args, task_kwargs, *args, **kwa
 
     data = {
         "task_id": task_id,
+        "task_name": "TRANSLATION",
         "status": "FAILED",
         "result": {"text": ""},
         "ai_models": [
