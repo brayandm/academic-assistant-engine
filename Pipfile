@@ -12,6 +12,7 @@ redis = "*"
 requests = "*"
 marshmallow = "*"
 openai = "*"
+gunicorn = "*"
 
 [dev-packages]
 
