@@ -13,6 +13,7 @@ requests = "*"
 marshmallow = "*"
 openai = "*"
 gunicorn = "*"
+watchdog = "*"
 
 [dev-packages]
 

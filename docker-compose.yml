@@ -57,7 +57,7 @@ services:
             engine_rabbitmq:
                 condition: service_healthy
         restart: always
-        command: ["sh", "-c", "celery -A engine.celery.app worker --loglevel=INFO"]
+        command: ["sh", "-c", "watchmedo auto-restart --directory=./ --pattern=*.py --recursive -- celery -A engine.celery.app worker --loglevel=INFO"]
 
     engine_redis:
         build:
